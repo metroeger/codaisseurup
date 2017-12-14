@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -58,8 +59,12 @@ gem 'devise', '~> 4.2'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :test do
   gem 'capybara', '~> 2.9', '>= 2.9.1'
 end
+
+gem 'rails_12factor', group: :production
