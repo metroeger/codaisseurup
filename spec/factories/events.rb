@@ -11,16 +11,14 @@ FactoryBot.define do
       starts_at 13/01/2018
       ends_at 15/01/2018
       active true
-      user              { build(:user) }
-
+      user   { build(:user) }
 
       trait :active do
         active true
-
+      end
 
       trait :inactive do
         active false
-
+      end 
     end
-  end
 end

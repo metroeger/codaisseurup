@@ -7,4 +7,6 @@ class Event < ApplicationRecord
   validates :ends_at, presence: true
   #validates :starts_at < :ends_at true
 
+  has_many :photos
+
 end

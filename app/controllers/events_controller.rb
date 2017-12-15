@@ -7,14 +7,16 @@ class EventsController < ApplicationController
   end
 
   def show
-  end
+    #@themes = @event.themes
+    @photos = @event.photos
+    end
 
-  def new
-    @event = current_user.events.new
-  end
+    def new
+      @event = current_user.events.build
+    end
 
   def create
-    @event = current_user.events(event_params)
+    @event = current_user.events.build(event_params)
 
    if @event.save
      redirect_to @event, notice: "You have an event created"
@@ -33,17 +35,19 @@ class EventsController < ApplicationController
       end
     end
 
-private
+  private
 
-def set_event
-  @event = Event.find(params[:id])
-end
+  def set_room
+    @event = Event.find(params[:id])
+  end
 
-def event_params
-  params
-    .require(:event)
-    .permit(
-
-    )
-end
+  def event_params
+    params
+      .require(:event)
+      .permit(
+        :name, :description, :location, :price, :capacity, :includes_food, :includes_drinks,
+        :start_at, :end_at, :active, :created_at, :updated_at, :has_heating, :user_id,
+        :price, :active
+      )
+    end
 end
